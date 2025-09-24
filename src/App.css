@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    background-color: #f0e8ff;
+    text-align: center;
+    align-items:center;
+    justify-content: center;    
+    
+}
+
+    .heading{
+        color:rgb(118, 165, 84);
+        border: 2px ;
+        
+        border-radius: 15px;
+
+    }
+.image{
+    width: 450px;
+    height: 350px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    object-fit: cover;
+
+}
+
