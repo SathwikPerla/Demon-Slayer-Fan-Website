@@ -1,32 +1,82 @@
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #101c2c 0%, #232946 100%);
 }
 
-.container{
-    background-image:url('./pictures/flame breathing.svg')  ;
-    background-color: #a8b8d4;
+.container {
+  /* background-image:url('./pictures/peakpx.jpg')  ; */
+  /* background-color: #a8b8d4;
     text-align: center;
     align-items:center;
-    justify-content: center;    
-    
+    justify-content: center;     */
+  position: relative; /* Ensure pseudo-element is positioned correctly */
+  background-image: url("./pictures/peakpx.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh; /* Or remove if your content is taller */
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 80px 0 #232946 inset;
+  padding-bottom: 40px;
+  overflow: hidden;
 }
 
-    .heading{
-        color:rgb(118, 165, 84);
-        border: 2px ;
-        
-        border-radius: 15px;
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("./pictures/peakpx.jpg");
+  background-size: 60%; /* Zoom out the image (was 'cover') */
+  background-repeat: repeat;
+  background-position: center;
+  filter: blur(24px) brightness(0.6); /* Reduced blur for clarity */
+  z-index: 0;
+  opacity: 0.7;
+}
+.container > * {
+  position: relative;
+  z-index: 1;
+}
 
-    }
-.image{
-    width: 450px;
+.heading {
+  color: #000000;
+  font-family: 'Orbitron', 'Montserrat', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 16px #3a86ff, 0 0 8px #232946, 0 0 2px #fff;
+  margin-bottom: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  transition: text-shadow 0.3s;
+}
+.heading:hover {
+  text-shadow: 0 4px 32px #3a86ffcc, 0 0 16px #23294699;
+}
+
+.image {
+  /* width: 450px;
     height: 350px;
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-top: 20px;
     margin-bottom: 20px;
-    object-fit: cover;
-
+    object-fit: cover; */
+  width: 450px;
+  height: 350px;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px 0 rgba(58, 134, 255, 0.2),
+    0 6px 24px 0 rgba(35, 41, 70, 0.19);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  object-fit: cover;
 }
-

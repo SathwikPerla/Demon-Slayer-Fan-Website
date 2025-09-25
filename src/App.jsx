@@ -1,10 +1,23 @@
+import { useState, useRef } from "react";
+import AkazaTheme from "./music/akazas_theme.mp3";
 import "./App.css";
 
-function Component({message}) {
+function Component({ message, onPlayMusic }) {
+  const [count, setCount] = useState(0);
+  const audioRef = useRef(null);
+
   function handleEvent() {
-    alert(message)
+    setCount(count + 1);
+    if (count + 1 === 3) {
+      onPlayMusic();
+    }
   }
-  return <button onClick={handleEvent}>click me man</button>;
+  // alert(message)
+  return (
+    <>
+      <button onClick={handleEvent}>You like this Arc {count} times</button>
+    </>
+  );
 }
 
 const users = [
@@ -12,12 +25,13 @@ const users = [
     firstName: "Season 1: Kimetsu no Yaiba ",
     lastName: "",
     imageUrl:
-      "https://images.steamusercontent.com/ugc/1768206388761433147/90516E21452574879A2768FCF0DCDE0B5CFBF4D2/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true",
+      "https://wallpapers.com/images/featured/demon-slayer-4k-pictures-5v5lz47uso2tx2kr.jpg",
     imageHeight: 450,
     imageWidth: 750,
     isMovie: false,
     demons: "shifting drum‐demon, Rui (Lower Moon 5)",
     breathingStyle: "Beast Breathing...🐗",
+    music: AkazaTheme,
   },
 
   {
@@ -29,6 +43,7 @@ const users = [
     isMovie: true,
     demons: "Enmu (Lower Rank One), Akaza (Upper Rank Three)",
     breathingStyle: "Flame Breathing...🔥",
+    music: AkazaTheme,
   },
 
   {
@@ -41,6 +56,7 @@ const users = [
     isMovie: false,
     demons: "Gyutaro and Daki (Upper Rank Six)",
     breathingStyle: "Sound Breathing...🔊",
+    music: AkazaTheme,
   },
 
   {
@@ -53,6 +69,7 @@ const users = [
     isMovie: false,
     demons: "Upper Rank Four & Five demons appear (Hantengu and Gyokko)",
     breathingStyle: "Mist Breathing 💦 , Love Breathing...💖",
+    music: AkazaTheme,
   },
   {
     firstName: "Season 4: Hashira Training Arc ",
@@ -65,6 +82,7 @@ const users = [
     demons: "Not many major Upper Kizuki",
     breathingStyle:
       "Stone Breathing 🗿 and Serpent Breathing 🐍 and Wind Breathing...💨",
+    music: AkazaTheme,
   },
 
   {
@@ -78,6 +96,7 @@ const users = [
     demons:
       "Muzan Kibutsuji, Upper Moon One (Kokushibo), Upper Moon Two (Doma), Akaza, Nakime",
     breathingStyle: "Water Breathing 🌊 and Insect Breathing...🦋",
+    music: AkazaTheme,
   },
   {
     firstName: "Movie 3: Sunrise Countdown ",
@@ -88,13 +107,23 @@ const users = [
     isMovie: true,
     demons: "Muzan is central. Also “Demonified Tanjiro” appears",
     breathingStyle: "Muzan Breathing...😂 🧛🏼 🕺🏿 ",
+    music: AkazaTheme,
   },
 ];
 
 export default function MyApp() {
+  const audioRef = useRef(null);
+
+  function playMusic() {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+    }
+  }
   return (
-    <div className="container">🕺🏿
-      <h1>Demon Slayer Fan Website</h1>
+    <div className="container">
+      <h1>Demon Slayer 🕺🏿 Fan Website</h1>
+      <audio ref={audioRef} src={AkazaTheme} style={{ display: "none" }} />
       {users.length === 0 ? (
         <h3>No Arcs exist Please gtfoh</h3>
       ) : (
@@ -113,8 +142,11 @@ export default function MyApp() {
               style={{ height: user.imageHeight, width: user.imageWidth }}
             />
             <h3 style={{}}>Demons Encountered: {user.demons}</h3>
-            <p>This is a test for multiple components</p>
-            <Component message={` ${user.breathingStyle}`} />
+            <Component
+              message={` ${user.breathingStyle}`}
+              onPlayMusic={playMusic}
+            />
+            <p>Click the button as many times as Akaza's rank for a suprise</p>
           </div>
         ))
       )}
