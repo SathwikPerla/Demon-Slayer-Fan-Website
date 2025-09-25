@@ -4,7 +4,8 @@ body {
 }
 
 .container{
-    background-color: #f0e8ff;
+    background-image:url('./pictures/flame breathing.svg')  ;
+    background-color: #a8b8d4;
     text-align: center;
     align-items:center;
     justify-content: center;    

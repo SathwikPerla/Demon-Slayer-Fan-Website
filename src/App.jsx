@@ -1,7 +1,10 @@
 import "./App.css";
 
-function Component() {
-  return <button>click me man</button>;
+function Component({message}) {
+  function handleEvent() {
+    alert(message)
+  }
+  return <button onClick={handleEvent}>click me man</button>;
 }
 
 const users = [
@@ -14,6 +17,7 @@ const users = [
     imageWidth: 750,
     isMovie: false,
     demons: "shifting drum‐demon, Rui (Lower Moon 5)",
+    breathingStyle: "Beast Breathing...🐗",
   },
 
   {
@@ -24,6 +28,7 @@ const users = [
     imageWidth: 680,
     isMovie: true,
     demons: "Enmu (Lower Rank One), Akaza (Upper Rank Three)",
+    breathingStyle: "Flame Breathing...🔥",
   },
 
   {
@@ -35,6 +40,7 @@ const users = [
     imageWidth: 680,
     isMovie: false,
     demons: "Gyutaro and Daki (Upper Rank Six)",
+    breathingStyle: "Sound Breathing...🔊",
   },
 
   {
@@ -46,6 +52,7 @@ const users = [
     imageWidth: 690,
     isMovie: false,
     demons: "Upper Rank Four & Five demons appear (Hantengu and Gyokko)",
+    breathingStyle: "Mist Breathing 💦 , Love Breathing...💖",
   },
   {
     firstName: "Season 4: Hashira Training Arc ",
@@ -56,6 +63,8 @@ const users = [
     imageWidth: 750,
     isMovie: false,
     demons: "Not many major Upper Kizuki",
+    breathingStyle:
+      "Stone Breathing 🗿 and Serpent Breathing 🐍 and Wind Breathing...💨",
   },
 
   {
@@ -68,6 +77,7 @@ const users = [
     isMovie: true,
     demons:
       "Muzan Kibutsuji, Upper Moon One (Kokushibo), Upper Moon Two (Doma), Akaza, Nakime",
+    breathingStyle: "Water Breathing 🌊 and Insect Breathing...🦋",
   },
   {
     firstName: "Movie 3: Sunrise Countdown ",
@@ -77,13 +87,14 @@ const users = [
     imageWidth: 750,
     isMovie: true,
     demons: "Muzan is central. Also “Demonified Tanjiro” appears",
+    breathingStyle: "Muzan Breathing...😂 🧛🏼 🕺🏿 ",
   },
 ];
 
 export default function MyApp() {
   return (
-    <div className="container">
-        <h1>Demon Slayer Fan Website</h1>
+    <div className="container">🕺🏿
+      <h1>Demon Slayer Fan Website</h1>
       {users.length === 0 ? (
         <h3>No Arcs exist Please gtfoh</h3>
       ) : (
@@ -91,7 +102,7 @@ export default function MyApp() {
           <div key={user.firstName}>
             <h1
               className="heading"
-              style={{ color: user.isMovie ? "#ff6600ff"  : "#ff1744" }}
+              style={{ color: user.isMovie ? "#ff6600ff" : "#ff1744" }}
             >
               {user.firstName + user.lastName}
             </h1>
@@ -101,9 +112,9 @@ export default function MyApp() {
               alt={"photo of " + user.firstName + user.lastName}
               style={{ height: user.imageHeight, width: user.imageWidth }}
             />
-            <h3>Demons Encountered:  {user.demons}</h3>
-            <p>This is a test for multiple components</p>   
-            <Component />
+            <h3 style={{}}>Demons Encountered: {user.demons}</h3>
+            <p>This is a test for multiple components</p>
+            <Component message={` ${user.breathingStyle}`} />
           </div>
         ))
       )}
